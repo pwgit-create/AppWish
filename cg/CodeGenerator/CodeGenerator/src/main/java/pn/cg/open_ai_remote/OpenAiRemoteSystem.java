@@ -2,11 +2,11 @@ package pn.cg.open_ai_remote;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pn.cg.open_ai_remote.request.RequestHandler;
 import pn.cg.app_system.code_generation.ClassCompiler;
 import pn.cg.app_wish.QuestionBuilder;
 import pn.cg.datastorage.DataStorage;
 import pn.cg.datastorage.constant.QuestionConstants;
+import pn.cg.open_ai_remote.request.RequestHandler;
 import pn.cg.open_ai_remote.request.RequestHandlerImpl;
 import pn.cg.util.FileUtil;
 import pn.cg.util.StringUtil;
@@ -24,10 +24,10 @@ import static pn.cg.datastorage.constant.CommonStringConstants.JAVA_FILE_EXTENSI
  */
 public class OpenAiRemoteSystem {
 
-    private ClassCompiler classCompiler;
+    private final ClassCompiler classCompiler;
 
-    private RequestHandler requestHandler;
-    private static Logger log = LoggerFactory.getLogger(OpenAiRemoteSystem.class);
+    private final RequestHandler requestHandler;
+    private static final Logger log = LoggerFactory.getLogger(OpenAiRemoteSystem.class);
 
     public OpenAiRemoteSystem() {
 
@@ -38,28 +38,45 @@ public class OpenAiRemoteSystem {
     /**
      * Create an app with default strategy
      *
-     * @param appWish
+     * @param appWish (The app wish text input from the app-user)
+     * @param firstRun (A flag that shows if the questions to OpenAI is the first or a retry question
      * @Strategy Send only 1 question to OpenAi and create only one .java file (if possible)
      */
-    public boolean CreateApp(String appWish, boolean isRetryCompilation) {
+    public  boolean CreateApp(String appWish, boolean firstRun) {
 
 
         QuestionBuilder questionBuilder = new QuestionBuilder(appWish);
         String outputFromOpenAi = "";
 
 
+        boolean isRetryCompilation;
+        boolean tmpRetryCompilationValue;
+
+        if(firstRun){
+        isRetryCompilation = false;}
+
+        else{
+
+            tmpRetryCompilationValue = DataStorage.getInstance().getCompilationJob().isResult();
+
+            isRetryCompilation = !tmpRetryCompilationValue;
+
+        }
+
         // Fetch response from OpenAi´s remote api
 
         if (isRetryCompilation) {
-            while (DataStorage.getInstance().getCompilationJob().getErrorMessage() == null) {
+            if(DataStorage.getInstance().getCompilationJob() != null && DataStorage.getInstance().getCompilationJob().getErrorMessage() != null) {
+                log.error("Class did not compile\nSending new request... ");}
+
+                //outputFromOpenAi = requestHandler.sendQuestionToOpenAi(questionBuilder.createCompileErrorQuestion(DataStorage.getInstance().getCompilationJob().getErrorMessage()));
+
+                if(DataStorage.getInstance().getCompilationJob() != null && !DataStorage.getInstance().getCompilationJob().isResult()) {
+                    outputFromOpenAi = requestHandler.sendQuestionToOpenAi(QuestionConstants.CLASS_DID_NOT_COMPILE_PREFIX_2 + appWish);
+                }
             }
-            log.error("Class did not compile\nHere is the question that would be sent to open ai" +
-                    questionBuilder.createCompileErrorQuestion(DataStorage.getInstance().getCompilationJob().getErrorMessage()));
 
-
-            //outputFromOpenAi = requestHandler.sendQuestionToOpenAi(questionBuilder.createCompileErrorQuestion(DataStorage.getInstance().getCompilationJob().getErrorMessage()));
-           outputFromOpenAi = requestHandler.sendQuestionToOpenAi(QuestionConstants.CLASS_DID_NOT_COMPILE_PREFIX_2 + appWish);
-        } else {
+          if(firstRun) {
             outputFromOpenAi = requestHandler.sendQuestionToOpenAi(questionBuilder.createFeatureQuestion());
         }
 
@@ -90,23 +107,17 @@ public class OpenAiRemoteSystem {
 
             classCompiler.compileClass(className);
 
-            while (DataStorage.getInstance().getCompilationJob() == null) {
+
+
+                while (DataStorage.getInstance().getCompilationJob().isResult() == null) {
+                }
             }
-            while (DataStorage.getInstance().getCompilationJob().isResult() == null) {
-            }
+           return DataStorage.getInstance().getCompilationJob().isResult();
 
-
-            if (!DataStorage.getInstance().getCompilationJob().isResult()) {
-
-                log.debug("Entry block for compilation error is hit");
-
-                return false;
-            }
-            return true;
         }
 
 
     }
 
 
-}
+

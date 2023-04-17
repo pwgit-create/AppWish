@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class StringUtil {
 
-    private static Logger log = LoggerFactory.getLogger(StringUtil.class);
+    private static final Logger log = LoggerFactory.getLogger(StringUtil.class);
 
 
     private static final String ERROR_PREFIX_LOG_ERROR = "Could not extract class name from java code file" +

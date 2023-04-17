@@ -13,10 +13,9 @@ import java.util.concurrent.ExecutorService;
 
 public class ClassCompiler {
 
-    private static Logger log = LoggerFactory.getLogger(ClassCompiler.class);
+    private static final Logger log = LoggerFactory.getLogger(ClassCompiler.class);
 
     public ClassCompiler() {
-
     }
 
     /**

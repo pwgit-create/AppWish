@@ -13,7 +13,7 @@ public class RequestHandlerImpl implements RequestHandler {
 
     private final OpenAiService service;
 
-    private static Logger log = LoggerFactory.getLogger(RequestHandlerImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(RequestHandlerImpl.class);
 
     public RequestHandlerImpl() {
 

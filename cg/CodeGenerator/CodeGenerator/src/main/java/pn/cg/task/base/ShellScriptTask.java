@@ -16,9 +16,8 @@ import java.util.List;
 public abstract class ShellScriptTask {
 
 
-    private static Logger log = LoggerFactory.getLogger(ShellScriptTask.class);
+    private static final Logger log = LoggerFactory.getLogger(ShellScriptTask.class);
     private final String PATH_TO_SCRIPT;
-    private final String SH = "sh";
     private String[] inputArgs;
 
     protected ProcessBuilder pb;
@@ -56,7 +55,7 @@ public abstract class ShellScriptTask {
             String line;
             while ((line = reader.readLine()) != null) {
 
-                log.debug(line);
+                //log.debug(line);
                 sb.append(line);
 
             }
@@ -75,6 +74,7 @@ public abstract class ShellScriptTask {
 
         List<String> cmdList = new LinkedList<>();
 
+        String SH = "sh";
         cmdList.add(SH);
         cmdList.add(PATH_TO_SCRIPT);
 

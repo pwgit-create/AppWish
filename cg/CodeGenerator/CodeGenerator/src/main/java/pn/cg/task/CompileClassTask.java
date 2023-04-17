@@ -10,9 +10,9 @@ import pn.cg.util.StringUtil;
 
 public class CompileClassTask extends ShellScriptTask implements Runnable {
 
-    private static Logger log = LoggerFactory.getLogger(CompileClassTask.class);
+    private static final Logger log = LoggerFactory.getLogger(CompileClassTask.class);
 
-    private String assumedClassName;
+    private  String assumedClassName;
 
     public CompileClassTask(String scriptName, String[] inputArgs) {
         super(scriptName, inputArgs);
@@ -28,51 +28,46 @@ public class CompileClassTask extends ShellScriptTask implements Runnable {
     }
 
     /**
-     * Handles the console output from the javac command
+     * Handles the console output from the compile process (javac)
      *
-     * @param javacOutput
+     * @param javacOutput String that contains an error message from a failed Java compilation
      */
     private void handleConsoleOutput(String javacOutput) {
-
-
-        if (javacOutput != null)
-            log.debug(javacOutput);
-        else
-            return;
-
+        if (javacOutput != null){
+            log.debug(javacOutput);}
+        assert javacOutput != null;
         if (javacOutput.isEmpty()) {
-
-            DataStorage.getInstance().setCompilationJob(new CompilationJob(assumedClassName));
-            DataStorage.getInstance().getCompilationJob().setResult(true);
             successFullCompilation();
         } else {
-
-
-
-            DataStorage.getInstance().setCompilationJob(new CompilationJob(assumedClassName));
-            DataStorage.getInstance().getCompilationJob().setErrorMessage(StringUtil
-                    .removeBadRequestChars(StringUtil
-                            .getFirstLine(javacOutput)));
-            DataStorage.getInstance().getCompilationJob().setResult(false);
-
-
             compilationError(javacOutput);
         }
     }
 
 
-    private synchronized   void successFullCompilation() {
+    /**
+     * Set compilation job to status successful,and add the value to the shared singleton
+     *
+     */
+    private  void successFullCompilation() {
         log.debug("successFullCompilation");
-        
-
-
+        CompilationJob compilationJob = new CompilationJob(assumedClassName);
+        compilationJob.setResult(true);
+        compilationJob.setErrorMessage(null);
+        DataStorage.getInstance().setCompilationJob(compilationJob);
 
     }
 
-    private synchronized   void compilationError(String javacOutput) {
+    /**
+     * Set compilation job to status error,and adds the sanitized error String to the shared singleton
+     */
+    private  void compilationError(String javacOutput) {
         log.debug("compilationError");
-        log.debug(javacOutput);
-
+        CompilationJob compilationJob = new CompilationJob(assumedClassName);
+        compilationJob.setResult(false);
+        compilationJob.setErrorMessage(StringUtil
+                .removeBadRequestChars(StringUtil
+                        .getFirstLine(javacOutput)));
+        DataStorage.getInstance().setCompilationJob(compilationJob);
     }
 
 
