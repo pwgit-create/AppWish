@@ -42,9 +42,7 @@ public class AppWish extends Application {
 
     @Override
     public void init() throws Exception {
-
         super.init();
-
     }
 
     @Override
@@ -53,40 +51,25 @@ public class AppWish extends Application {
         ThreadPoolMaster.getInstance().TerminateThreads();
         Platform.exit();
         super.stop();
-
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
         System.setProperty(SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "TRACE");
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass()
-                .getClassLoader().getResource(GUIConstants.DEFAULT_FXML_FILE)));
-
-
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(GUIConstants.DEFAULT_FXML_FILE)));
         primaryStage.setTitle(GUIConstants.DEFAULT_STAGE_TITLE);
-
-
         Scene scene = new Scene(root);
-
-
         primaryStage.setScene(scene);
-
         primaryStage.show();
-
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-
     }
 
     public void onAppWish(ActionEvent ae) {
 
 
-
-
-             ThreadPoolMaster.getInstance().getExecutor().execute(() -> {
+        ThreadPoolMaster.getInstance().getExecutor().execute(() -> {
 
             DataStorage.getInstance().setCompilationJob(new CompilationJob(GUIConstants.DEFAULT_STAGE_TITLE));
-
             Platform.runLater(() -> {
                 btn_run_application.setVisible(false);
                 output_label.setText("Generating code...");
@@ -95,12 +78,15 @@ public class AppWish extends Application {
 
             if (tf_input != null) {
 
-                // Make a recursive call to AppSystem
-                AppSystem.StartCodeGenerator(tf_input.getText(),true,false);
-                while(!DataStorage.getInstance().getCompilationJob().isResult()){}
+                    // Make a recursive call to AppSystem
+                    AppSystem.StartCodeGenerator(tf_input.getText(), true, false);
+
+
+                while (!DataStorage.getInstance().getCompilationJob().isResult()) {
+                }
                 if (DataStorage.getInstance().getCompilationJob().isResult()) {
 
-                    javaExecutablePath =DataStorage.getInstance().getJavaExecutionPath();
+                    javaExecutablePath = DataStorage.getInstance().getJavaExecutionPath();
 
 
                     // Draw success or error texts, and show run app button
@@ -110,28 +96,27 @@ public class AppWish extends Application {
 
                             btn_run_application.setVisible(true);
 
-                        }
-                        else {
+                        } else {
                             output_label.setText("Error");
                         }
-
                     });
-
                 }
-            } });
+            }
+        });
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
 
-
+        }
 
     }
 
-
     public void onRunJavaApp(ActionEvent ae) {
-
-
         if (javaExecutablePath != null) {
 
             System.out.println("Executing java app on path -> " + javaExecutablePath);
             try {
+
                 new ProcessBuilder("/bin/bash", "-c", "java " + javaExecutablePath).inheritIO().start().waitFor();
             } catch (InterruptedException e) {
                 System.out.println("InterruptedException while starting Java executable");
@@ -140,7 +125,6 @@ public class AppWish extends Application {
                 System.out.println("RuntimeException while starting Java executable");
                 throw new RuntimeException(e);
             }
-
 
         }
     }

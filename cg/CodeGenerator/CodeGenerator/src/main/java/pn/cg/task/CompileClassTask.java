@@ -12,7 +12,7 @@ public class CompileClassTask extends ShellScriptTask implements Runnable {
 
     private static final Logger log = LoggerFactory.getLogger(CompileClassTask.class);
 
-    private  String assumedClassName;
+    private final String assumedClassName;
 
     public CompileClassTask(String scriptName, String[] inputArgs) {
         super(scriptName, inputArgs);
@@ -33,8 +33,6 @@ public class CompileClassTask extends ShellScriptTask implements Runnable {
      * @param javacOutput String that contains an error message from a failed Java compilation
      */
     private void handleConsoleOutput(String javacOutput) {
-        if (javacOutput != null){
-            log.debug(javacOutput);}
         assert javacOutput != null;
         if (javacOutput.isEmpty()) {
             successFullCompilation();

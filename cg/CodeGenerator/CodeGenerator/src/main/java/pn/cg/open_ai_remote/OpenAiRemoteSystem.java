@@ -14,7 +14,6 @@ import pn.cg.util.TaskUtil;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.IllegalFormatCodePointException;
 
 import static pn.cg.datastorage.constant.CommonStringConstants.ERROR;
 import static pn.cg.datastorage.constant.CommonStringConstants.JAVA_FILE_EXTENSION;
@@ -42,13 +41,10 @@ public class OpenAiRemoteSystem {
      * @param firstRun (A flag that shows if the questions to OpenAI is the first or a retry question
      * @Strategy Send only 1 question to OpenAi and create only one .java file (if possible)
      */
-    public  boolean CreateApp(String appWish, boolean firstRun) {
-
+    public synchronized boolean CreateApp(String appWish, boolean firstRun) {
 
         QuestionBuilder questionBuilder = new QuestionBuilder(appWish);
         String outputFromOpenAi = "";
-
-
         boolean isRetryCompilation;
         boolean tmpRetryCompilationValue;
 
@@ -56,21 +52,15 @@ public class OpenAiRemoteSystem {
         isRetryCompilation = false;}
 
         else{
-
             tmpRetryCompilationValue = DataStorage.getInstance().getCompilationJob().isResult();
-
             isRetryCompilation = !tmpRetryCompilationValue;
-
         }
-
         // Fetch response from OpenAi´s remote api
 
         if (isRetryCompilation) {
             if(DataStorage.getInstance().getCompilationJob() != null && DataStorage.getInstance().getCompilationJob().getErrorMessage() != null) {
                 log.error("Class did not compile\nSending new request... ");}
-
                 //outputFromOpenAi = requestHandler.sendQuestionToOpenAi(questionBuilder.createCompileErrorQuestion(DataStorage.getInstance().getCompilationJob().getErrorMessage()));
-
                 if(DataStorage.getInstance().getCompilationJob() != null && !DataStorage.getInstance().getCompilationJob().isResult()) {
                     outputFromOpenAi = requestHandler.sendQuestionToOpenAi(QuestionConstants.CLASS_DID_NOT_COMPILE_PREFIX_2 + appWish);
                 }
@@ -84,10 +74,10 @@ public class OpenAiRemoteSystem {
         String className = StringUtil.extractClassNameFromTextWithJavaClasses(outputFromOpenAi);
 
         if (className.equalsIgnoreCase(ERROR)) {
+            //log.debug("Empty class name");
+        }
 
-            throw new IllegalFormatCodePointException(0);
-        } else {
-
+        else {
             //remove the request query from the text output
             String javaSourceCode = StringUtil.removeFirstLine(outputFromOpenAi);
 
@@ -107,16 +97,11 @@ public class OpenAiRemoteSystem {
 
             classCompiler.compileClass(className);
 
-
-
                 while (DataStorage.getInstance().getCompilationJob().isResult() == null) {
                 }
             }
            return DataStorage.getInstance().getCompilationJob().isResult();
-
         }
-
-
     }
 
 

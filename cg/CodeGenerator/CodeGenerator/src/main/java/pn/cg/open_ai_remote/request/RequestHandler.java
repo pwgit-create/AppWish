@@ -23,7 +23,6 @@ public interface RequestHandler {
                 .echo(true)
                 .maxTokens(4000)
                 .build();
-
     }
 
     /**

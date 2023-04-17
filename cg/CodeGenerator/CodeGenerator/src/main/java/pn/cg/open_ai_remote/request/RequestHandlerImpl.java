@@ -24,13 +24,9 @@ public class RequestHandlerImpl implements RequestHandler {
     @Override
     public  String sendQuestionToOpenAi(String question) {
         CompletionRequest completionRequest = createCompletionRequestByQuestion(question);
-
         List<CompletionChoice> completionChoices = service.createCompletion(completionRequest).getChoices();
-
         String outputFromOpenAi = (completionChoices.get(0).getText());
-
         log.debug(outputFromOpenAi);
-
         return outputFromOpenAi;
     }
 }

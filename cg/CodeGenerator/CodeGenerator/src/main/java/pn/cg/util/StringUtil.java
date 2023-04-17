@@ -42,11 +42,12 @@ public class StringUtil {
             }
         }
 
+
         if (className.isBlank()) {
-            log.error(ERROR_PREFIX_LOG_ERROR + unparsedJavaClassText);
+           // log.error(ERROR_PREFIX_LOG_ERROR + unparsedJavaClassText);
             return CommonStringConstants.ERROR;
         } else
-            log.debug("Class name -> "+className);
+            //log.debug("Class name -> "+className);
             return className;
 
     }
