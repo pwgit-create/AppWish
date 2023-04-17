@@ -52,5 +52,3 @@ It's possible to run applications directly from app wish given there is no input
 #### Known issues and problem-solving
 1. Depending on the level of the app wish it may take more or less time to generate the app. Disable the annoying waiting dialog in gnome by adding more times before it shows:
    ```gsettings set org.gnome.mutter check-alive-timeout 60000```
-
-2. If you are experiencing many recompile requests on successfully compiled applications (after retries) , switch to using the console version (create Main with App Wish text) since the threads from CodeGenerator are not combined with the JavaFX framework threads. This will only happen on retry compiles and it's possible to manually stop the app if the GUI is desired.   
