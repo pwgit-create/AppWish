@@ -30,8 +30,11 @@ The generated apps will be saved in:
 It's possible to run applications directly from app wish given there is no input parameters. If so, please run the class file manually with the required input parameters.
 
 
-
-
+#### App Wish Generation Tips
+1.	If you desire a window app, add “with gui” to your text. \
+<b>Example:</b>  ```mp3 player with gui```
+2.	If you desire user input to your app, add “with user input to your text”. \
+<b>Example:</b>  ```calculator with gui “and user input”```
 
 
 #### System Requirements
