@@ -11,7 +11,7 @@ Well, now you can!
 
 
 ### How does it work
-<p>App Wish makes request to an Open AI model (ChatGPT) with requests to build an app. It will try to compile the code received and if it fails it retries again (up to 5 times).</p>
+<p>App Wish makes requests to an Open AI model (ChatGPT) and builds a fully functional app for you with the responses it receives. It will try to compile the code received and if it fails it retries again until a successful compilation is achieved .</p>
 
 
 
