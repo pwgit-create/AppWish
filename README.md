@@ -17,10 +17,10 @@ Well, now you can!
 
 #### How to start the project:
 1.	Add your OPENAI API key as an environment variable:
-```export OPENAI_TOKEN=YOUR_KEY``` 
+      ```export OPENAI_TOKEN=YOUR_KEY```
 2. Run this command:
-``` Make run ```
-3. Make a wish :) 
+   ``` Make run ```
+3. Make a wish :)
 
 
 
@@ -32,9 +32,9 @@ It's possible to run applications directly from app wish given there is no input
 
 #### App Wish Generation Tips
 1.	If you desire a window app, add “with gui” to your text. \
-<b>Example:</b>  ```mp3 player with gui```
+      <b>Example:</b>  ```mp3 player with gui```
 2.	If you desire user input to your app, add “with user input to your text”. \
-<b>Example:</b>  ```calculator with gui “and user input”```
+      <b>Example:</b>  ```calculator with gui “and user input”```
 
 
 #### System Requirements
@@ -55,3 +55,9 @@ It's possible to run applications directly from app wish given there is no input
 #### Known issues and problem-solving
 1. Depending on the level of the app wish it may take more or less time to generate the app. Disable the annoying waiting dialog in gnome by adding more times before it shows:
    ```gsettings set org.gnome.mutter check-alive-timeout 60000```
+
+
+## Included libraries that will increase the success rate on compile tries
+* https://mvnrepository.com/artifact/org.jsoup/jsoup/1.15.4
+* https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.9.0
+
