@@ -60,11 +60,5 @@ It's possible to run applications directly from app wish given there is no input
 
 ## Include external jars in your classpath (not required)
 If your app wishes receive code with non-existing libraries you can either add those externally by downloading jars from https://mvnrepository.com/ and add them to you class path.
-The easiest way to do that is to add a folder for them and then export an environment variable pointing to it.
-``` export CLASSPATH=$CLASSPATH:/path/to/jar_folder```
 
-
-
-
-##### (if you dont want to use these libs when compiling, set the flag to false in https://github.com/pwgit-create/AppWish/blob/master/cg/CodeGenerator/CodeGenerator/src/main/java/pn/cg/datastorage/constant/CodeGeneratorConstants.java)
 
