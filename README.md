@@ -55,9 +55,13 @@ It's possible to run applications directly from app wish given there is no input
 #### Known issues and problem-solving
 1. Depending on the level of the app wish it may take more or less time to generate the app. Disable the annoying waiting dialog in gnome by adding more times before it shows:
    ```gsettings set org.gnome.mutter check-alive-timeout 60000```
+2. Make sure that all files in AppWish/AppWish/src/main/resources/external_jars/ are executable (Can be done with sudo chmod +x at that path). 
+3. Make sure that all files in AppWish/AppWish/src/main/resources/sh_scripts are executable (Can be done with sudo chmod +x at that path).
 
 
 ## Included libraries that will increase the success rate on compile tries
 * https://mvnrepository.com/artifact/org.jsoup/jsoup/1.15.4
 * https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.9.0
+* https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver/4.9.0
+* https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver
 
