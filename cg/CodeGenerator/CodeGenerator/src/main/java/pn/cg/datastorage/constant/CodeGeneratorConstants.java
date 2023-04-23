@@ -10,8 +10,8 @@ public class CodeGeneratorConstants {
     public final static int CONNECTION_TIMEOUT=600;
 
     /**
-     * If external jars should be used when compiling
+     * Limit the number of retries that will be sent to OpenAi when the compilation fials
      */
-    public final static boolean USE_EXTERNAL_JARS_WHEN_COMPILING = true;
+    public final static int retryClassCompileLimit = 5;
 
 }

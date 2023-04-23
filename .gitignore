@@ -42,4 +42,3 @@ hs_err_pid*
 modules.xml
 *.iml
 .idea/modules
-/AppWish/AppWish/src/main/resources/java_source_code_classes_tmp/
