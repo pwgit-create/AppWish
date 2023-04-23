@@ -66,3 +66,5 @@ The easiest way to do that is to add a folder for them and then export an enviro
 
 
 
+##### (if you dont want to use these libs when compiling, set the flag to false in https://github.com/pwgit-create/AppWish/blob/master/cg/CodeGenerator/CodeGenerator/src/main/java/pn/cg/datastorage/constant/CodeGeneratorConstants.java)
+
