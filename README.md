@@ -65,3 +65,5 @@ It's possible to run applications directly from app wish given there is no input
 * https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver/4.9.0
 * https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver/4.9.0
 
+##### (if you dont want to use these libs when compiling, set the flag to false in https://github.com/pwgit-create/AppWish/blob/master/cg/CodeGenerator/CodeGenerator/src/main/java/pn/cg/datastorage/constant/CodeGeneratorConstants.java)
+
