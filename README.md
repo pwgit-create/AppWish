@@ -63,5 +63,5 @@ It's possible to run applications directly from app wish given there is no input
 * https://mvnrepository.com/artifact/org.jsoup/jsoup/1.15.4
 * https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.9.0
 * https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver/4.9.0
-* https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver
+* https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver/4.9.0
 
