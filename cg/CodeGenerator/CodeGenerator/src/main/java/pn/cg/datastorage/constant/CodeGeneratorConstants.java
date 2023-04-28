@@ -1,5 +1,7 @@
 package pn.cg.datastorage.constant;
 
+import java.time.Duration;
+
 public class CodeGeneratorConstants {
 
     public final static String OPEN_AI_MODEL_GPT_3 = "text-davinci-003";
@@ -7,11 +9,7 @@ public class CodeGeneratorConstants {
     /**
      *  OkHttp 3 connection session value in seconds
      */
-    public final static int CONNECTION_TIMEOUT=600;
+    public final static Duration CONNECTION_TIMEOUT=Duration.ofSeconds(600L);
 
-    /**
-     * Limit the number of retries that will be sent to OpenAi when the compilation fials
-     */
-    public final static int retryClassCompileLimit = 5;
 
 }

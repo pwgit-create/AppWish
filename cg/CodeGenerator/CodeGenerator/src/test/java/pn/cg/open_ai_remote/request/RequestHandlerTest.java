@@ -1,10 +1,27 @@
-package pn.cg.task.open_ai_remote;
+package pn.cg.open_ai_remote.request;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RequestHandlerTest {
 
+    @Test
+    public void getEnvForOpenAiTokenShouldReturnTrueTest(){
+
+        boolean actual = false;
+
+        try {
+            if(System.getenv("OPENAI_TOKEN").length() > 0)
+                actual = true;
+        }
+
+        catch (NullPointerException nullPointerException){
+            System.out.println("Your api key is not present\nMake sure that you named your ENV to OPENAI_TOKEN");
+        }
+
+        Assertions.assertTrue(actual);
+
+    }
 
     private final String exampleOutputFromOpenAi = "//Create a NameGenerator class\n" +
             "public class NameGenerator\n" +
@@ -55,8 +72,6 @@ public class RequestHandlerTest {
 public void parseExampleResponseAndMatchClassNameWithExpected(){
 
     final String expected ="NameGenerator";
-
-  int indexOfPublicClass = exampleOutputFromOpenAi.indexOf("public class");
 
     String[] lines = exampleOutputFromOpenAi.split("\n");
 
