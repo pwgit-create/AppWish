@@ -31,7 +31,7 @@
          </top>
          <center>
 
-            <TextField fx:id="tf_input" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="150.0" scaleShape="false" style="-fx-border-color: s; -fx-focus-traversable: true; -fx-padding: 3;" translateX="100.0" BorderPane.alignment="CENTER">
+            <TextField fx:id="tf_input" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="150.0" scaleShape="false" style="-fx-border-color: blue; -fx-focus-traversable: true; -fx-padding: 3;" translateX="100.0" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Broadway" size="12.0" />
                </font>

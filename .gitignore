@@ -43,6 +43,12 @@ modules.xml
 *.iml
 .idea/modules
 
+# iml (Intellij)
+AppWish/AppWish/CodeGenerator_GUI.iml
+cg/CodeGenerator/CodeGenerator/CodeGenerator.iml
+
+# dependency-reduced-pom
+cg/CodeGenerator/CodeGenerator/dependency-reduced-pom.xml
 
 # Generated applications folder
 /AppWish/AppWish/src/main/resources/java_source_code_classes_tmp/
