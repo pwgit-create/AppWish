@@ -106,11 +106,18 @@ Note: It's important to exercise caution when downloading external libraries and
 
 Ready to enhance your app wishes? Let's dive into the world of external libraries with App Wish!
 
-## Videos
+## Videos - App Generation
 
 * [AppWish creates a web server](https://youtu.be/szhi6pNPFSw)
 * [AppWish creates a weather app](https://www.youtube.com/watch?v=giuntcnoPR8)
 * [AppWish creates an application that modifies a file](https://www.youtube.com/watch?v=LvBkAZHOgOA)
+
+## Videos - Setup instructions
+#### Windows
+* [Windows setup Appwish]( https://www.youtube.com/watch?v=C_qn6o0-0Pc)
+#### Linux
+* [Linux setup AppWish]( https://www.youtube.com/watch?v=LcCnj_raZiY)
+
 
 
 
@@ -119,3 +126,5 @@ Ready to enhance your app wishes? Let's dive into the world of external librarie
 * Make windows (easy install) https://steve.fi/software/make/ 
 * Mvn https://maven.apache.org/
 * Java https://jdk.java.net/20/
+
+
