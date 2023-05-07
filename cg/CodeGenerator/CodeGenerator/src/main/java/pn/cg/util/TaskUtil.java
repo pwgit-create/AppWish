@@ -2,6 +2,8 @@ package pn.cg.util;
 
 import pn.cg.datastorage.constant.ScriptConstants;
 
+import java.io.File;
+
 public class TaskUtil {
 
     /**
@@ -11,6 +13,6 @@ public class TaskUtil {
      */
     public static String addFilePathToClassName(String classname){
 
-        return ScriptConstants.COMPILE_CLASS_STORAGE+"/"+classname;
+        return ScriptConstants.COMPILE_CLASS_STORAGE+ File.separator+classname;
     }
 }

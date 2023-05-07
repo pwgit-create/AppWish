@@ -3,6 +3,7 @@ package pn.app_wish.util;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -28,5 +29,10 @@ public class AppWishUtil {
 
    return javaAndClassFiles.stream().filter(f -> f.getPath().endsWith(".class")).collect(Collectors.toList());
 
+    }
+
+    public static boolean isLinux(){
+
+       return Objects.equals(File.separator, "/");
     }
 }

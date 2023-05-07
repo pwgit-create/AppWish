@@ -73,7 +73,11 @@ public class AppHistoryController implements Initializable {
 
 
         try {
-          ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c","java " +selectedFile.getAbsolutePath().replace(".class",".java"));
+            ProcessBuilder processBuilder;
+            if(AppWishUtil.isLinux())
+           processBuilder = new ProcessBuilder("/bin/bash", "-c","java " +selectedFile.getAbsolutePath().replace(".class",".java"));
+            else
+                processBuilder = new ProcessBuilder("java.exe",selectedFile.getAbsolutePath().replace(".class",".java"));
             executingJavaAppProcess = processBuilder.inheritIO().start();
 
         }
@@ -86,7 +90,7 @@ public class AppHistoryController implements Initializable {
 
 
     private void listHistoryApplications() throws IOException {
-        File selectedDirectory = new File(PathConstants.RESOURCE_PATH + "java_source_code_classes_tmp/");
+        File selectedDirectory = new File(PathConstants.RESOURCE_PATH + "java_source_code_classes_tmp"+File.separator);
         List<File> files = AppWishUtil.filterOnClassPrefix(Arrays.stream(Objects.requireNonNull(selectedDirectory.listFiles()))
                 .collect(Collectors.toList()));
         fileListView.getItems().clear();
