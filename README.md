@@ -22,10 +22,18 @@ Follow these simple steps to get started with AppWish:
 #### On Linux
 Add your OPENAI API key as an environment variable by executing the following command in the terminal:
 ```export OPENAI_TOKEN=YOUR_KEY```
-#### On Windows
+#### On Windows (extra steps included)
 Add a new environment variable for your user called OPENAI_TOKEN and use your OPENAI API key as value
 See article from howtogeek for more information: https://www.howtogeek.com/787217/how-to-edit-environment-variables-on-windows-10-or-11/
 
+### 2.1 (only windows) Enable running unsigned scripts. 
+      
+      2.1.1 Start Windows PowerShell with the "Run as Administrator" option
+      2.1.2 Enter: set-executionpolicy remotesigned in the console
+      
+      Note: This is needed for allowing the powershell compile script to execute if 
+      script running is disabled. It will allow local scripts to be run but 
+      not remote ones (on your computer):
 
 ### 2. In your terminal, use the following command to start the application:
 #### On Linux: ```make run```
