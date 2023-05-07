@@ -5,10 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pn.cg.app_system.code_generation.model.CompilationJob;
 import pn.cg.datastorage.DataStorage;
-import pn.cg.task.base.ShellScriptTask;
+import pn.cg.task.base.ScriptTask;
 import pn.cg.util.StringUtil;
 
-public class CompileClassTask extends ShellScriptTask implements Runnable {
+public class CompileClassTask extends ScriptTask implements Runnable {
 
     private static final Logger log = LoggerFactory.getLogger(CompileClassTask.class);
 
@@ -23,7 +23,7 @@ public class CompileClassTask extends ShellScriptTask implements Runnable {
     @Override
     public void run() {
         log.debug("Starting compile algorithm");
-        String consoleOutput = RunShellScript();
+        String consoleOutput = RunScript();
         handleConsoleOutput(consoleOutput);
     }
 

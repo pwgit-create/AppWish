@@ -16,15 +16,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.slf4j.simple.SimpleLogger;
 import pn.app_wish.constant.GUIConstants;
+import pn.app_wish.util.AppWishUtil;
 import pn.cg.app_system.AppSystem;
 import pn.cg.app_system.code_generation.model.CompilationJob;
 import pn.cg.datastorage.DataStorage;
 import pn.cg.datastorage.ThreadPoolMaster;
 
 import java.io.IOException;
-import java.net.URL;
+
 import java.util.Objects;
-import java.util.ResourceBundle;
+
 
 import static pn.app_wish.constant.GUIConstants.APP_HISTORY_STAGE_TILE;
 import static pn.app_wish.constant.GUIConstants.DEFAULT_FXML_FILE;
@@ -143,7 +144,11 @@ public class AppWish extends Application  {
         if (javaExecutablePath != null) {
             System.out.println("Executing java app on path -> " + javaExecutablePath);
             try {
-                ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", "java " + javaExecutablePath);
+                ProcessBuilder pb;
+                if(AppWishUtil.isLinux())
+                 pb = new ProcessBuilder("/bin/bash", "-c", "java " + javaExecutablePath);
+                else
+                    pb = new ProcessBuilder("java.exe",javaExecutablePath);
                 executingJavaAppProcess = pb.inheritIO().start();
             } catch (IOException e) {
                 System.out.println("RuntimeException while starting Java executable");

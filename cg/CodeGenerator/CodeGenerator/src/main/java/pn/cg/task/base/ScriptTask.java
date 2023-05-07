@@ -6,48 +6,58 @@ import org.slf4j.LoggerFactory;
 import pn.cg.datastorage.constant.PathConstants;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 
-public abstract class ShellScriptTask {
+public abstract class ScriptTask {
 
 
-    private static final Logger log = LoggerFactory.getLogger(ShellScriptTask.class);
+    private static final Logger log = LoggerFactory.getLogger(ScriptTask.class);
     private final String PATH_TO_SCRIPT;
     private String[] inputArgs;
 
     protected ProcessBuilder pb;
 
 
-    public ShellScriptTask(String scriptName) {
+    public ScriptTask(String scriptName) {
 
         PATH_TO_SCRIPT = PathConstants.RESOURCE_PATH + PathConstants.SHELL_SCRIPT_PATH + scriptName;
     }
 
-    public ShellScriptTask(String scriptName, String[] inputArgs) {
+    public ScriptTask(String scriptName, String[] inputArgs) {
         this.inputArgs = inputArgs;
         PATH_TO_SCRIPT = PathConstants.RESOURCE_PATH + PathConstants.SHELL_SCRIPT_PATH + scriptName;
 
     }
 
 
-    protected String RunShellScript() {
+    protected String RunScript() {
 
-        log.debug("Started Shell Script Task");
+       boolean isLinux = Objects.equals(File.separator, "/");
+
+       String logMessage = isLinux ? "Started Shell Script Task" : "Started PS Script Task";
+
+        log.debug(logMessage);
 
         pb = new ProcessBuilder();
 
-        SetCommands(pb);
+        if(isLinux)
+        SetCommandsLinux(pb);
+        else
+            SetCommandsWin(pb);
 
         try {
 
             Process process = pb.start();
 
             process.waitFor();
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             StringBuilder sb = new StringBuilder();
@@ -55,9 +65,8 @@ public abstract class ShellScriptTask {
             String line;
             while ((line = reader.readLine()) != null) {
 
-                //log.debug(line);
+               // log.debug(line);
                 sb.append(line);
-
             }
 
             return sb.toString();
@@ -70,7 +79,7 @@ public abstract class ShellScriptTask {
     }
 
 
-    protected void SetCommands(ProcessBuilder pb) {
+    protected void SetCommandsLinux(ProcessBuilder pb) {
 
         List<String> cmdList = new LinkedList<>();
 
@@ -80,6 +89,24 @@ public abstract class ShellScriptTask {
 
         if (inputArgs != null)
             cmdList.addAll(Arrays.asList(inputArgs));
+
+
+        pb.command(cmdList);
+
+
+    }
+
+    protected void SetCommandsWin(ProcessBuilder pb) {
+
+        List<String> cmdList = new LinkedList<>();
+
+        String PS = "powershell.exe";
+        cmdList.add(PS);
+
+        cmdList.add(PATH_TO_SCRIPT);
+
+        if (inputArgs != null)
+            cmdList.add("-pathToJavaFile "+"\""+inputArgs[0]+"\"") ;
 
 
         pb.command(cmdList);
