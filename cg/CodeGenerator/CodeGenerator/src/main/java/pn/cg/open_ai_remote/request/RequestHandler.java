@@ -2,7 +2,8 @@ package pn.cg.open_ai_remote.request;
 
 import com.theokanning.openai.completion.CompletionRequest;
 
-import static pn.cg.datastorage.constant.CodeGeneratorConstants.OPEN_AI_MODEL_GPT_3;
+
+import static pn.cg.datastorage.constant.CodeGeneratorConstants.OPEN_AI_MODEL_GPT_3_5_TURBO;
 
 /**
  * Handles all requests to the Open AI Api
@@ -19,7 +20,7 @@ public interface RequestHandler {
 
         return CompletionRequest.builder()
                 .prompt(question)
-                .model(OPEN_AI_MODEL_GPT_3)
+                .model(OPEN_AI_MODEL_GPT_3_5_TURBO)
                 .echo(true)
                 .maxTokens(4000)
                 .build();
