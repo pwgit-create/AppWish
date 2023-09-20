@@ -4,6 +4,8 @@ import java.time.Duration;
 
 public class CodeGeneratorConstants {
 
+    public final static String OPEN_AI_MODEL_GPT_3_5_TURBO = "gpt-3.5-turbo-instruct";
+
     public final static String OPEN_AI_MODEL_GPT_3 = "text-davinci-003";
 
     /**
