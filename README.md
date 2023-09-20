@@ -19,6 +19,11 @@ Ready to make your app wishes come true? Let's get started with App Wish!
 Follow these simple steps to get started with AppWish:
 
 ### 1. Set up your OPENAI API key:
+
+## Make sure you have the OPEN AI KEY
+* [Video instructions](https://www.youtube.com/watch?v=aVog4J6nIAU)
+* [Web instructions](https://www.howtogeek.com/885918/how-to-get-an-openai-api-key/)
+
 #### On Linux
 Add your OPENAI API key as an environment variable by executing the following command in the terminal:
 ```export OPENAI_TOKEN=YOUR_KEY```
@@ -88,7 +93,7 @@ Ready to dive into your generated apps? Let's explore the possibilities with App
 
 ##### Credentials requirements  <u>(Needed for API Key)</u>
 
-1. An account (free or paid) at OpenAI https://auth0.openai.com/u/signup/
+1. An account (free or paid) at OpenAI https://platform.openai.com/account/
 
 
 ## Unlock the Power of External Libraries for Your App Wishes!
@@ -117,8 +122,6 @@ Ready to enhance your app wishes? Let's dive into the world of external librarie
 * [Windows setup Appwish]( https://www.youtube.com/watch?v=C_qn6o0-0Pc)
 #### Linux
 * [Linux setup AppWish]( https://www.youtube.com/watch?v=LcCnj_raZiY)
-
-
 
 
 ## Download links for application needed for appWish to work
