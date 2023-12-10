@@ -113,9 +113,11 @@ Ready to enhance your app wishes? Let's dive into the world of external librarie
 
 ## Videos - App Generation
 
+* [Appwish Video mix](https://www.youtube.com/watch?v=2htjAD1L5v0&list=PL0iduoILay6AntUNHFFbKOOykfDnSP3Gy&index=8)
 * [AppWish creates a web server](https://youtu.be/szhi6pNPFSw)
 * [AppWish creates a weather app](https://www.youtube.com/watch?v=giuntcnoPR8)
 * [AppWish creates an application that modifies a file](https://www.youtube.com/watch?v=LvBkAZHOgOA)
+
 
 ## Videos - Setup instructions
 #### Windows
