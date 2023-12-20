@@ -12,8 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    
+      - name: checkout repo
+        uses: actions/checkout@main
+      - name: build code-generator
+        run: make code-generator
 
-    - name: Compile Code generator
-      run: ../code-generator
+    
 
