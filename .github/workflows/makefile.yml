@@ -5,7 +5,10 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+    
+env:
+  OPENAI_TOKEN: mockKey
+  
 jobs:
   build:
 
