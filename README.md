@@ -93,7 +93,7 @@ Ready to dive into your generated apps? Let's explore the possibilities with App
 
 ##### Credentials requirements  <u>(Needed for API Key)</u>
 
-1. An account (free or paid) at OpenAI https://platform.openai.com/account/
+* An account (free or paid) at OpenAI https://platform.openai.com/account/
 
 
 ## Unlock the Power of External Libraries for Your App Wishes!
