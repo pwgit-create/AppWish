@@ -22,8 +22,6 @@ jobs:
       - name: build code-generator
         run: make code-generator
         
-      - name: build appwish GUI
-        run: make appwish
 
     
 
