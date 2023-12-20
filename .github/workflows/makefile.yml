@@ -1,0 +1,27 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+    
+env:
+  OPENAI_TOKEN: mockKey
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: checkout repo
+        uses: actions/checkout@main
+        
+      - name: build code-generator
+        run: make code-generator
+        
+
+    
+
