@@ -14,14 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: configure
-      run: ./configure
+    - name: Compile Code generator
+      run: code-generator
 
-    - name: Install dependencies
-      run: run:appwish
-
-    - name: Run check
-      run: make check
-
-    - name: Run distcheck
-      run: make distcheck
