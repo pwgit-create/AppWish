@@ -1,4 +1,4 @@
-# Introducing App Wish: Turn Your App Ideas into Reality!
+# Turn Your App Ideas into Reality!
 
 Introducing App Wish, a groundbreaking platform that empowers you to transform your app concepts into fully functional applications. Powered by an advanced Open AI model called davinci  , App Wish takes your requests and generates the necessary code to build your app.
 
