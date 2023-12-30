@@ -9,7 +9,7 @@
     <name>CodeGenerator-GUI</name>
 
 
-    <description>Peter Westin's project at the ChatGPT Hackathon</description>
+    <description>The GUI interface for the PN.dev.code-generator library is included in this package. Using this library requires the pn.dev.code-generator package to be added as a dependency</description>
     <inceptionYear>2023</inceptionYear>
 
     <developers>
@@ -30,6 +30,15 @@
         <junit.version>5.9.3</junit.version>
         <javafx.version>19.0.2.1</javafx.version>
     </properties>
+    
+    <distributionManagement>
+   <repository>
+     <id>github</id>
+     <name>GitHub pwgit-create Apache Maven Packages</name>
+     <url>https://maven.pkg.github.com/pwgit-create/AppWish</url>
+   </repository>
+</distributionManagement>
+    
     <dependencies>
         <dependency>
             <groupId>pn.dev</groupId>
