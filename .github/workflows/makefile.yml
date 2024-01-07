@@ -25,10 +25,9 @@ jobs:
       - name: build appwish-gui
         run: make appwish
       
-      - uses: actions/checkout@master
+      - uses: snyk/actions/maven@master
       - name: Run Snyk to check for vulnerabilities
-             working-directory:'./cg/CodeGenerator/CodeGenerator/'
-        uses: snyk/actions/maven@master
+        working-directory: ./cg/CodeGenerator/CodeGenerator/
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         
