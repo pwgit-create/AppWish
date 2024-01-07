@@ -30,9 +30,10 @@ jobs:
      runs-on: ubuntu-latest
      steps:
       - uses: actions/checkout@main
+         working-directory:'./cg/CodeGenerator/CodeGenerator/pom.xml'
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
-              working-directory:'./cg/CodeGenerator/CodeGenerator/pom.xml'
+          working-directory:'./cg/CodeGenerator/CodeGenerator/pom.xml'
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         
