@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         working-directory: cg/CodeGenerator/CodeGenerator
-        run: snyk/actions/maven@master
+        run: snyk test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
