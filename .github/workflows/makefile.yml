@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@main
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
-              working-directory:'./cg/CodeGenerator/CodeGenerator/'
+              working-directory:'./cg/CodeGenerator/CodeGenerator/pom.xml'
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         
