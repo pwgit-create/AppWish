@@ -8,6 +8,9 @@ Note: Please keep in mind that while App Wish strives to generate functional cod
 
 <br/>
 
+## IMPORTANT INFO
+<B>Unfortunately, the OPENAI models are limiting the use of code generation. In order to solve this problem, I initiated the process of creating a new repository that utilizes local LLMs. Stay tuned for the repository that will be up here shortly and utilizes ollama. </B>
+
 ## AppWish Quick Start Guide:
 Follow these simple steps to get started with AppWish:
 
